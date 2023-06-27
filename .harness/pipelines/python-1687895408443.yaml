@@ -26,12 +26,20 @@ pipeline:
                       dry_run: "true"
                       repo: hello/world
                       tags: latest
+                    connectorRef: account.harnessImage
                   timeout: ""
                   type: Plugin
+              - step:
+                  type: Run
+                  name: test
+                  identifier: test
+                  spec:
+                    shell: Sh
+                    command: echo "test"
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Cloud
+            spec: {}
         type: CI
